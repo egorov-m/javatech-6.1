@@ -9,10 +9,15 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demoweb.model.User;
+import com.example.demoweb.util.DbUtil;
 
 public class UserDao implements Dao<User> {
 
-    private static Connection connection = Util.getConnection();
+    private Connection connection;
+
+    public UserDao() {
+        connection = DbUtil.getConnection();
+    }
 
     @Override
     public Optional<User> get(String login) {

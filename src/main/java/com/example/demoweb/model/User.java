@@ -34,4 +34,19 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof User) {
+            User user = (User) o;
+            if (user.getEmail() == this.email) return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.email.hashCode();
+    }
 }
