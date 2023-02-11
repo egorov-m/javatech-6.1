@@ -1,29 +1,31 @@
 package com.example.demoweb.service;
 
+import java.util.Optional;
+
+import com.example.demoweb.dao.UserDao;
 import com.example.demoweb.model.User;
-import com.example.demoweb.repository.UserRepository;
 
 public class UserService {
-    private final UserRepository userRepository;
+    private final UserDao userDao;
 
-    public UserService(UserRepository userRepository){
-        this.userRepository = userRepository;
+    public UserService(UserDao userDao){
+        this.userDao = userDao;
     }
 
     public UserService() {
-        this.userRepository = new UserRepository();
+        this.userDao = new UserDao();
     }
 
     public void addUser(String login, String email, String password) {
         if (login != null && login != "" && email != null && email != "" && password != null && password != "") {
             User user = new User(login, email, password);
-            if (userRepository.save(user)) return;
+            if (userDao.save(user)) return;
         }
         throw new IllegalArgumentException();
     }
 
     public boolean validUser(String login, String password) {
-        User user = userRepository.getUser(login);
-        return user != null && user.getPassword().equals(password);
+        Optional<User> user = userDao.get(login);
+        return !user.isEmpty() && user.get().getPassword().equals(password);
     }
 }

@@ -7,7 +7,7 @@
          version="3.1">
          <filter>
             <filter-name>RequestLoggingFilter</filter-name>
-            <filter-class>com.example.demoweb.RequestLoggingFilter</filter-class>
+            <filter-class>com.example.demoweb.filter.RequestLoggingFilter</filter-class>
          </filter>
          <filter-mapping>
             <filter-name>RequestLoggingFilter</filter-name>
@@ -16,7 +16,7 @@
 
          <filter>
             <filter-name>RequestDirectoryFilter</filter-name>
-            <filter-class>com.example.demoweb.RequestDirectoryFilter</filter-class>
+            <filter-class>com.example.demoweb.filter.RequestDirectoryFilter</filter-class>
          </filter>
          <filter-mapping>
             <filter-name>RequestDirectoryFilter</filter-name>
