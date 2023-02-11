@@ -1,4 +1,4 @@
-package com.example.demoweb;
+package com.example.demoweb.controller;
 
 import java.io.File;
 import java.io.IOException;
